@@ -6,6 +6,46 @@ This project demonstrates an Agentic AI system designed to autonomously execute 
 The system focuses on reasoning, tool orchestration, and explainability rather than complex model training. It retrieves recent AI research papers related to agriculture, summarizes their abstracts, and stores the results in a structured format suitable for further analysis.
 ---
 
+# System Architecture
+
+## Component Description
+
+### 1. User Interface
+The user provides a high-level natural language goal describing the task to be performed by the agent.
+
+---
+
+### 2. Agent Planner
+The Agent Planner interprets the user goal and decomposes it into a sequence of actionable steps such as searching, summarizing, and storing results. This component enables autonomous task execution.
+
+---
+
+### 3. Tool Executor
+The Tool Executor is responsible for invoking internal and external tools required to complete the task.
+
+- **arXiv Search Tool**: Queries the arXiv public API to retrieve recent research papers related to AI and agriculture.
+- **Summarization Tool**: Condenses research paper abstracts into concise summaries using rule-based logic.
+
+---
+
+### 4. Memory / Storage Module
+This component stores the processed research information in a structured JSON format, simulating agent memory and enabling organized output generation.
+
+---
+
+### 5. Final Output Generator
+The Final Output Generator returns the structured research summaries to the user, completing the task workflow.
+
+---
+
+## Design Principles
+- Modularity for easy extension
+- Explainability through simple, transparent logic
+- Clear separation of planning, execution, and storage
+- Lightweight implementation suitable for real-world AI systems
+
+-- For Clear view please visit Architecture.png file.
+
 ## Agent Workflow
 1. Interpret the user goal and create a task plan  
 2. Retrieve recent research papers using the arXiv public API  
