@@ -64,7 +64,23 @@ The Final Output Generator returns the structured research summaries to the user
 - **Python** for agent logic and orchestration  
 - **arXiv Public API** for accessing recent research papers  
 - **Rule-based summarization** for transparent and explainable text reduction  
-- **Structured JSON storage** for memory and output representation  
+- **Structured JSON storage** for memory and output representation
+
+---
+## Design Decisions
+
+- A lightweight, rule-based summarization approach was chosen instead of an LLM-based solution to keep the system transparent, deterministic, and easy to explain.
+- The agent logic is kept modular, separating planning, tool execution, and storage, to allow future extensions without redesigning the system.
+- The arXiv public API was selected as a reliable and freely accessible source of recent research papers.
+
+---
+## Future Enhancements
+
+- Integrating an LLM-based summarization module for richer, context-aware summaries.
+- Adding domain-specific filtering (e.g., agriculture-focused keywords or categories) to improve relevance.
+- Introducing caching or memory persistence to avoid repeated API calls for the same queries.
+- Adding structured logging and error handling for improved robustness in production environments.
+
 
 ---
 
@@ -97,19 +113,5 @@ Find the top 3 recent AI research papers on agriculture, summarize them, and sto
   }
 ]
 
----
-## Design Decisions
-
-- A lightweight, rule-based summarization approach was chosen instead of an LLM-based solution to keep the system transparent, deterministic, and easy to explain.
-- The agent logic is kept modular, separating planning, tool execution, and storage, to allow future extensions without redesigning the system.
-- The arXiv public API was selected as a reliable and freely accessible source of recent research papers.
-
----
-## Future Enhancements
-
-- Integrating an LLM-based summarization module for richer, context-aware summaries.
-- Adding domain-specific filtering (e.g., agriculture-focused keywords or categories) to improve relevance.
-- Introducing caching or memory persistence to avoid repeated API calls for the same queries.
-- Adding structured logging and error handling for improved robustness in production environments.
 
 
