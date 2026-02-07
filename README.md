@@ -4,49 +4,6 @@
 This project demonstrates an Agentic AI system designed to autonomously execute a multi-step research task. Given a high-level user goal, the agent plans the required steps, interacts with external tools, processes retrieved information, and produces a structured output.
 
 The system focuses on reasoning, tool orchestration, and explainability rather than complex model training. It retrieves recent AI research papers related to agriculture, summarizes their abstracts, and stores the results in a structured format suitable for further analysis.
-
----
-
-## System Architecture
-
-┌───────────┐
-│   User    │
-│  (Goal)   │
-└─────┬─────┘
-      │
-      ▼
-┌───────────────────┐
-│ Agent Planner     │
-│ (Task Decomposer) │
-└─────┬─────────────┘
-      │
-      ▼
-┌──────────────────────────┐
-│ Tool Executor            │
-│ ├─ arXiv Search Tool     │
-│ ├─ Summarization Tool   │
-└─────┬───────────────────┘
-      │
-      ▼
-┌───────────────────┐
-│ Memory / Storage  │
-│ (Structured JSON) │
-└─────┬─────────────┘
-      │
-      ▼
-┌───────────────────┐
-│ Final Output      │
-│ (Research Summary)│
-└───────────────────┘
-
-
-### Architecture Explanation
-The system follows a modular agent-based architecture. A user provides a high-level research goal, which is interpreted by the Agent Planner. The planner decomposes the goal into sequential steps such as searching, summarizing, and storing results.
-
-The Tool Executor interacts with both external and internal tools. The arXiv Search Tool retrieves recent research papers, while the Summarization Tool condenses abstracts into concise summaries. The processed information is then stored in a structured memory module using JSON format.
-
-Finally, the agent returns the organized research summaries as the final output. This architecture emphasizes reasoning, modularity, and transparency.
-
 ---
 
 ## Agent Workflow
