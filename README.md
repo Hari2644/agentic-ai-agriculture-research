@@ -55,6 +55,11 @@ The Final Output Generator returns the structured research summaries to the user
 
 ---
 
+## Notes & Extensions
+- Research papers are retrieved in descending order of submission date to ensure that the results are recent.
+- The agent can be extended with basic error handling to manage scenarios such as API failures or empty search results.
+
+---
 ## Tools & Technologies
 - **Python** for agent logic and orchestration  
 - **arXiv Public API** for accessing recent research papers  
@@ -92,6 +97,4 @@ Find the top 3 recent AI research papers on agriculture, summarize them, and sto
   }
 ]
 
-## Notes & Extensions
-- Research papers are retrieved in descending order of submission date to ensure that the results are recent.
-- The agent can be extended with basic error handling to manage scenarios such as API failures or empty search results.
+
