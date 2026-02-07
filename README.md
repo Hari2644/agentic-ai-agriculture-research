@@ -1,25 +1,62 @@
 # Agentic AI – Agriculture Research Assistant
 
 ## Overview
-This project demonstrates an Agentic AI system designed to autonomously execute a multi-step research task. Given a high-level user goal, the agent plans the required steps, interacts with external tools, processes retrieved information, and produces a structured output. The system focuses on clarity, explainability, and modular design rather than complex model training.
+This project demonstrates an Agentic AI system designed to autonomously execute a multi-step research task. Given a high-level user goal, the agent plans the required steps, interacts with external tools, processes retrieved information, and produces a structured output.
 
-The implemented agent retrieves recent AI research papers related to agriculture, summarizes their abstracts, and stores the results in a structured format suitable for downstream use or analysis.
+The system focuses on reasoning, tool orchestration, and explainability rather than complex model training. It retrieves recent AI research papers related to agriculture, summarizes their abstracts, and stores the results in a structured format suitable for further analysis.
+
+---
+
+## System Architecture
+
+┌───────────┐
+│   User    │
+│  (Goal)   │
+└─────┬─────┘
+      │
+      ▼
+┌───────────────────┐
+│ Agent Planner     │
+│ (Task Decomposer) │
+└─────┬─────────────┘
+      │
+      ▼
+┌──────────────────────────┐
+│ Tool Executor            │
+│ ├─ arXiv Search Tool     │
+│ ├─ Summarization Tool   │
+└─────┬───────────────────┘
+      │
+      ▼
+┌───────────────────┐
+│ Memory / Storage  │
+│ (Structured JSON) │
+└─────┬─────────────┘
+      │
+      ▼
+┌───────────────────┐
+│ Final Output      │
+│ (Research Summary)│
+└───────────────────┘
+
+
+### Architecture Explanation
+The system follows a modular agent-based architecture. A user provides a high-level research goal, which is interpreted by the Agent Planner. The planner decomposes the goal into sequential steps such as searching, summarizing, and storing results.
+
+The Tool Executor interacts with both external and internal tools. The arXiv Search Tool retrieves recent research papers, while the Summarization Tool condenses abstracts into concise summaries. The processed information is then stored in a structured memory module using JSON format.
+
+Finally, the agent returns the organized research summaries as the final output. This architecture emphasizes reasoning, modularity, and transparency.
+
+---
 
 ## Agent Workflow
-1. **Goal Interpretation & Planning**  
-   The agent receives a natural language goal and decomposes it into a clear sequence of actions.
+1. Interpret the user goal and create a task plan  
+2. Retrieve recent research papers using the arXiv public API  
+3. Summarize paper abstracts using rule-based logic  
+4. Store processed information in structured memory  
+5. Return the final organized output  
 
-2. **Research Paper Retrieval**  
-   An external search tool queries the arXiv public API to fetch the most recent research papers relevant to AI and agriculture.
-
-3. **Summarization**  
-   A lightweight summarization module condenses each paper’s abstract into concise, readable summaries.
-
-4. **Memory & Storage**  
-   The processed information is stored in a structured JSON-based format, simulating an agent memory component.
-
-5. **Final Output Generation**  
-   The agent returns the organized research summaries as the final result.
+---
 
 ## Tools & Technologies
 - **Python** for agent logic and orchestration  
@@ -27,15 +64,33 @@ The implemented agent retrieves recent AI research papers related to agriculture
 - **Rule-based summarization** for transparent and explainable text reduction  
 - **Structured JSON storage** for memory and output representation  
 
+---
+
 ## Sample Task
 **User Goal:**  
 Find the top 3 recent AI research papers on agriculture, summarize them, and store the output in a structured format.
 
-## Output
-The agent produces a structured list containing:
-- Paper title  
-- Publication date  
-- Summarized abstract  
-- arXiv link  
+---
 
-This project highlights reasoning, tool orchestration, and system design principles relevant to real-world AI agent development.
+## Sample Output
+```json
+[
+  {
+    "title": "Shared LoRA Subspaces for almost Strict Continual Learning",
+    "published_date": "2026-02-05",
+    "summary": "This paper proposes a parameter-efficient continual learning approach that dynamically updates a shared low-rank subspace to integrate knowledge across multiple tasks while minimizing catastrophic forgetting.",
+    "link": "http://arxiv.org/abs/2602.06043v1"
+  },
+  {
+    "title": "DyTopo: Dynamic Topology Routing for Multi-Agent Reasoning",
+    "published_date": "2026-02-05",
+    "summary": "The study introduces a multi-agent reasoning framework that dynamically adapts communication topology using semantic matching, improving coordination and reasoning efficiency across tasks.",
+    "link": "http://arxiv.org/abs/2602.06039v1"
+  },
+  {
+    "title": "CommCP: Efficient Multi-Agent Coordination via LLM-Based Communication",
+    "published_date": "2026-02-05",
+    "summary": "This work presents a decentralized communication framework for cooperative multi-agent systems, leveraging conformal prediction to enhance reliability and coordination efficiency.",
+    "link": "http://arxiv.org/abs/2602.06038v1"
+  }
+]
